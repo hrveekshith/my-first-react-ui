@@ -1,27 +1,26 @@
-import TextBox from './components/TextBox';
-import Greeting from './components/Greeting';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import CustomButton from './components/CustomButton';
-import logo from './logo.svg';
+import { Link, Routes, Route } from 'react-router-dom';
+import Home from "./pages/Home";
+import About from "./pages/About"
 import './App.css';
-import { useState } from 'react';
+
 
 function App() {
-  const [count,setCount] = useState(0)
-  return (
-    <div className="App">
-      <Header title="React Counter App" />
-      <main>
-        <Greeting name="Veekshith H R" />
-        <p>You're building your first React UI!</p>
-                  <p>Count:{count}</p>
-                  <button className="px-4 py-2 bg-green-500 text-white rounded-lg mt-4" onClick={()=>setCount(count+1)}>Click Me</button>
-        <TextBox />
-      </main>
-      <Footer condition = {count>5} />
-    </div>
-  );
+  return(
+    <>
+    <nav>
+      <Link to="/" className='mx-2'>Home</Link>
+      <Link to="/about" className='mx-2'>About</Link>
+    </nav>
+    
+    <Routes>
+        <Route path="/" element={<Home />} />
+         <Route path="/about" element={<About />} />
+    </Routes>
+
+    </>
+    
+  )
+
 };
 
 export default App;
